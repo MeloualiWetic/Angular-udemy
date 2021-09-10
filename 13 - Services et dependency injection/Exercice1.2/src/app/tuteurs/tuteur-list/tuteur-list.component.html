@@ -1,0 +1,53 @@
+<div class='card'>
+  <div class='card-header'>
+    {{pageTitle}}
+  </div>
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-2'>Filter by:</div>
+      <div class='col-md-4'>
+        <input type='text' />
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-6'>
+        <h4>Filtered by: </h4>
+      </div>
+    </div>
+    <div class='table-responsive'>
+      <table class='table'
+         *ngIf='tutors && tutors.length'>
+        <thead>
+          <tr>
+            <th>
+              <button class='btn btn-primary'   (click)='toggleImage()'>
+                {{showImage ? 'Hide' : 'Show'}} Image
+              </button>
+            </th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Age</th>
+            <th>Adress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let tutor of tutors'>
+            <td>
+              <img *ngIf='showImage'
+                   [src]='tutor.imageUrl'
+                   [title]='tutor.firstName'
+                   [style.width.px]='imageWidth'
+
+                   [style.margin.px]='imageMargin'>
+            </td>
+            <td>{{ tutor.firstName}}</td>
+            <td>{{ tutor.lastName }}</td>
+            <td>{{ tutor.age }}</td>
+            <td>{{ tutor.adress }}</td>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
